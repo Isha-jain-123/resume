@@ -1,0 +1,1021 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Isha Jain — Resume</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+    <style>
+        /* ── Reset & Base ─────────────────────────────────── */
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --clr-bg:        #f8f7f4;
+            --clr-surface:   #ffffff;
+            --clr-primary:   #1a1a2e;
+            --clr-accent:    #16213e;
+            --clr-highlight: #0f3460;
+            --clr-pop:       #e94560;
+            --clr-text:      #2c2c2c;
+            --clr-muted:     #6b7280;
+            --clr-border:    #e5e7eb;
+            --clr-tag-bg:    #eef2ff;
+            --clr-tag-text:  #3730a3;
+            --radius:        10px;
+            --shadow-sm:     0 1px 3px rgba(0,0,0,.06), 0 1px 2px rgba(0,0,0,.04);
+            --shadow-md:     0 4px 16px rgba(0,0,0,.07);
+            --shadow-lg:     0 10px 40px rgba(0,0,0,.08);
+            --transition:    .25s cubic-bezier(.4,0,.2,1);
+        }
+
+        html { scroll-behavior: smooth; font-size: 16px; }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--clr-bg);
+            color: var(--clr-text);
+            line-height: 1.65;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* ── Navigation ───────────────────────────────────── */
+        .navbar {
+            position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+            background: rgba(26,26,46,.95);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255,255,255,.08);
+            transition: var(--transition);
+        }
+
+        .navbar-inner {
+            max-width: 1100px; margin: 0 auto;
+            display: flex; align-items: center; justify-content: space-between;
+            padding: 0 2rem; height: 60px;
+        }
+
+        .navbar .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.2rem; font-weight: 700;
+            color: #fff; letter-spacing: .5px;
+            text-decoration: none;
+        }
+
+        .nav-links { display: flex; gap: .25rem; list-style: none; }
+
+        .nav-links a {
+            color: rgba(255,255,255,.7); text-decoration: none;
+            font-size: .8rem; font-weight: 500; letter-spacing: .3px;
+            padding: .45rem .85rem; border-radius: 6px;
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            color: #fff; background: rgba(255,255,255,.1);
+        }
+
+        .nav-toggle { display: none; background: none; border: none; cursor: pointer; padding: .5rem; }
+        .nav-toggle span { display: block; width: 22px; height: 2px; background: #fff; margin: 5px 0; border-radius: 2px; transition: var(--transition); }
+
+        /* ── Hero ──────────────────────────────────────────── */
+        .hero {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            padding: 10rem 2rem 5rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute; inset: 0;
+            background: radial-gradient(circle at 20% 80%, rgba(233,69,96,.12) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 20%, rgba(15,52,96,.3) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .hero-content { position: relative; z-index: 1; max-width: 720px; margin: 0 auto; }
+
+        .hero-avatar {
+            width: 110px; height: 110px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--clr-pop), #f97316);
+            display: flex; align-items: center; justify-content: center;
+            margin: 0 auto 2rem;
+            font-family: 'Playfair Display', serif;
+            font-size: 2.6rem; font-weight: 700; color: #fff;
+            box-shadow: 0 8px 32px rgba(233,69,96,.3);
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem; font-weight: 700;
+            color: #fff; margin-bottom: .6rem;
+            letter-spacing: -.5px;
+        }
+
+        .hero .tagline {
+            font-size: 1.15rem; color: rgba(255,255,255,.7);
+            font-weight: 300; margin-bottom: 2rem;
+        }
+
+        .hero-contact {
+            display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem;
+        }
+
+        .hero-contact a {
+            display: inline-flex; align-items: center; gap: .5rem;
+            padding: .6rem 1.4rem; border-radius: 50px;
+            font-size: .85rem; font-weight: 500;
+            text-decoration: none; transition: var(--transition);
+        }
+
+        .contact-pill {
+            background: rgba(255,255,255,.1); color: rgba(255,255,255,.9);
+            border: 1px solid rgba(255,255,255,.15);
+        }
+        .contact-pill:hover { background: rgba(255,255,255,.2); color: #fff; }
+
+        .contact-pill svg { width: 16px; height: 16px; flex-shrink: 0; }
+
+        /* ── Layout ────────────────────────────────────────── */
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 2rem; }
+
+        .main-content { padding: 4rem 0 6rem; }
+
+        /* ── Section ───────────────────────────────────────── */
+        .section { margin-bottom: 3.5rem; }
+
+        .section-header {
+            display: flex; align-items: center; gap: .75rem;
+            margin-bottom: 1.75rem; padding-bottom: .75rem;
+            border-bottom: 2px solid var(--clr-border);
+        }
+
+        .section-icon {
+            width: 36px; height: 36px; border-radius: 8px;
+            display: flex; align-items: center; justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .section-icon svg { width: 18px; height: 18px; }
+
+        .section-icon.blue   { background: #dbeafe; color: #2563eb; }
+        .section-icon.green  { background: #d1fae5; color: #059669; }
+        .section-icon.purple { background: #ede9fe; color: #7c3aed; }
+        .section-icon.red    { background: #fee2e2; color: #dc2626; }
+        .section-icon.amber  { background: #fef3c7; color: #d97706; }
+        .section-icon.teal   { background: #ccfbf1; color: #0d9488; }
+        .section-icon.rose   { background: #ffe4e6; color: #e11d48; }
+        .section-icon.slate  { background: #e2e8f0; color: #475569; }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.55rem; font-weight: 700;
+            color: var(--clr-primary);
+        }
+
+        /* ── Card ──────────────────────────────────────────── */
+        .card {
+            background: var(--clr-surface);
+            border: 1px solid var(--clr-border);
+            border-radius: var(--radius);
+            padding: 1.5rem 1.75rem;
+            margin-bottom: 1rem;
+            transition: var(--transition);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .card:hover {
+            box-shadow: var(--shadow-md);
+            border-color: #d1d5db;
+            transform: translateY(-1px);
+        }
+
+        .card-header {
+            display: flex; justify-content: space-between; align-items: flex-start;
+            flex-wrap: wrap; gap: .5rem;
+            margin-bottom: .6rem;
+        }
+
+        .card-title {
+            font-size: 1.05rem; font-weight: 600;
+            color: var(--clr-primary); line-height: 1.35;
+        }
+
+        .card-subtitle {
+            font-size: .88rem; color: var(--clr-muted);
+            font-style: italic; margin-bottom: .75rem;
+        }
+
+        .date-badge {
+            display: inline-flex; align-items: center; gap: .35rem;
+            font-size: .78rem; font-weight: 500;
+            color: var(--clr-highlight);
+            background: #eef2ff;
+            padding: .3rem .75rem; border-radius: 50px;
+            white-space: nowrap;
+        }
+
+        .date-badge svg { width: 13px; height: 13px; }
+
+        /* ── Lists ─────────────────────────────────────────── */
+        .detail-list { list-style: none; padding: 0; }
+
+        .detail-list li {
+            position: relative;
+            padding-left: 1.25rem;
+            margin-bottom: .45rem;
+            font-size: .9rem;
+            color: #374151;
+            line-height: 1.6;
+        }
+
+        .detail-list li::before {
+            content: '';
+            position: absolute; left: 0; top: .55rem;
+            width: 6px; height: 6px;
+            border-radius: 50%;
+            background: var(--clr-pop);
+            opacity: .7;
+        }
+
+        /* ── Education Card ────────────────────────────────── */
+        .edu-card {
+            display: flex; align-items: center; gap: 1.5rem;
+        }
+
+        .edu-emblem {
+            width: 64px; height: 64px; flex-shrink: 0;
+            border-radius: 12px;
+            background: linear-gradient(135deg, #1a1a2e, #0f3460);
+            display: flex; align-items: center; justify-content: center;
+            color: #fff; font-family: 'Playfair Display', serif;
+            font-size: 1rem; font-weight: 700; text-align: center;
+            line-height: 1.15; letter-spacing: .5px;
+        }
+
+        .edu-details { flex: 1; }
+
+        .edu-details .card-title { margin-bottom: .15rem; }
+
+        .edu-meta {
+            display: flex; flex-wrap: wrap; gap: .75rem; align-items: center;
+            margin-top: .3rem;
+        }
+
+        .edu-meta span {
+            font-size: .85rem; color: var(--clr-muted);
+        }
+
+        .gpa-badge {
+            display: inline-flex; align-items: center; gap: .3rem;
+            font-size: .8rem !important; font-weight: 600;
+            color: #059669 !important;
+            background: #d1fae5;
+            padding: .2rem .65rem; border-radius: 50px;
+        }
+
+        /* ── Skills ────────────────────────────────────────── */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .skill-category h4 {
+            font-size: .82rem; font-weight: 600;
+            text-transform: uppercase; letter-spacing: .6px;
+            color: var(--clr-muted);
+            margin-bottom: .75rem;
+        }
+
+        .skill-tags { display: flex; flex-wrap: wrap; gap: .4rem; }
+
+        .skill-tag {
+            display: inline-block;
+            padding: .3rem .75rem; border-radius: 6px;
+            font-size: .8rem; font-weight: 500;
+            background: var(--clr-tag-bg);
+            color: var(--clr-tag-text);
+            border: 1px solid #e0e7ff;
+            transition: var(--transition);
+        }
+
+        .skill-tag:hover {
+            background: #c7d2fe;
+            transform: translateY(-1px);
+        }
+
+        .skill-tag.framework {
+            background: #fef3c7; color: #92400e;
+            border-color: #fde68a;
+        }
+        .skill-tag.framework:hover { background: #fde68a; }
+
+        /* ── Awards ────────────────────────────────────────── */
+        .award-item {
+            display: flex; align-items: flex-start; gap: 1rem;
+            padding: 1rem 0;
+            border-bottom: 1px solid var(--clr-border);
+        }
+
+        .award-item:last-child { border-bottom: none; }
+
+        .award-year {
+            flex-shrink: 0;
+            width: 52px; height: 52px;
+            border-radius: 10px;
+            background: linear-gradient(135deg, #fef3c7, #fde68a);
+            display: flex; align-items: center; justify-content: center;
+            font-size: .8rem; font-weight: 700; color: #92400e;
+        }
+
+        .award-text {
+            font-size: .9rem; color: #374151; line-height: 1.55;
+        }
+
+        .award-text strong { color: var(--clr-primary); }
+
+        /* ── Sports Grid ───────────────────────────────────── */
+        .medals-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: .6rem;
+        }
+
+        .medal-item {
+            display: flex; align-items: center; gap: .6rem;
+            padding: .6rem .85rem;
+            background: var(--clr-surface);
+            border: 1px solid var(--clr-border);
+            border-radius: 8px;
+            font-size: .82rem;
+            transition: var(--transition);
+        }
+
+        .medal-item:hover { box-shadow: var(--shadow-sm); }
+
+        .medal-emoji {
+            font-size: 1.1rem; flex-shrink: 0;
+            width: 28px; height: 28px;
+            display: flex; align-items: center; justify-content: center;
+            border-radius: 6px;
+        }
+
+        .medal-emoji.gold   { background: #fef3c7; }
+        .medal-emoji.silver { background: #e2e8f0; }
+        .medal-emoji.bronze { background: #fed7aa; }
+
+        /* ── Publication ───────────────────────────────────── */
+        .pub-card {
+            border-left: 4px solid var(--clr-pop);
+        }
+
+        .pub-card .pub-title {
+            font-size: .95rem; font-weight: 600;
+            color: var(--clr-primary); margin-bottom: .3rem;
+        }
+
+        .pub-card .pub-authors {
+            font-size: .85rem; color: var(--clr-muted);
+            margin-bottom: .25rem;
+        }
+
+        .pub-card .pub-journal {
+            font-size: .84rem; font-style: italic;
+            color: var(--clr-highlight);
+        }
+
+        .patent-badge {
+            display: inline-flex; align-items: center; gap: .4rem;
+            padding: .35rem .85rem; border-radius: 50px;
+            font-size: .82rem; font-weight: 600;
+            background: linear-gradient(135deg, #fef3c7, #fde68a);
+            color: #92400e;
+            margin-top: .75rem;
+        }
+
+        .patent-badge svg { width: 14px; height: 14px; }
+
+        /* ── Extra-curricular ──────────────────────────────── */
+        .extra-group { margin-bottom: 1.25rem; }
+
+        .extra-group-title {
+            font-size: .88rem; font-weight: 600;
+            color: var(--clr-primary);
+            margin-bottom: .5rem;
+            display: flex; align-items: center; gap: .5rem;
+        }
+
+        .extra-group-subtitle {
+            font-size: .84rem; color: var(--clr-muted);
+            font-style: italic; margin-bottom: .75rem;
+        }
+
+        /* ── Footer ────────────────────────────────────────── */
+        .footer {
+            background: var(--clr-primary);
+            padding: 2.5rem 2rem;
+            text-align: center;
+            color: rgba(255,255,255,.5);
+            font-size: .82rem;
+        }
+
+        .footer a { color: rgba(255,255,255,.7); text-decoration: none; }
+        .footer a:hover { color: #fff; }
+
+        /* ── Animations ────────────────────────────────────── */
+        .fade-up {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: opacity .6s ease, transform .6s ease;
+        }
+
+        .fade-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ── Responsive ────────────────────────────────────── */
+        @media (max-width: 768px) {
+            .hero { padding: 8rem 1.5rem 3.5rem; }
+            .hero h1 { font-size: 2.2rem; }
+            .hero .tagline { font-size: 1rem; }
+            .container { padding: 0 1.25rem; }
+            .card { padding: 1.25rem; }
+            .card-header { flex-direction: column; }
+            .skills-grid { grid-template-columns: 1fr; }
+            .edu-card { flex-direction: column; align-items: flex-start; gap: 1rem; }
+            .medals-grid { grid-template-columns: 1fr; }
+            .nav-links { display: none; }
+            .nav-toggle { display: block; }
+            .navbar.open .nav-links {
+                display: flex; flex-direction: column;
+                position: absolute; top: 60px; left: 0; right: 0;
+                background: rgba(26,26,46,.98);
+                padding: 1rem; gap: .25rem;
+            }
+            .section-title { font-size: 1.3rem; }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 { font-size: 1.8rem; }
+            .hero-contact { flex-direction: column; align-items: center; }
+            .hero-avatar { width: 90px; height: 90px; font-size: 2.2rem; }
+        }
+
+        /* Print styles */
+        @media print {
+            .navbar, .nav-toggle { display: none; }
+            .hero { padding-top: 2rem; }
+            .card:hover { transform: none; box-shadow: var(--shadow-sm); }
+            .fade-up { opacity: 1; transform: none; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- ── Navigation ─────────────────────────────────────────── -->
+<nav class="navbar" id="navbar">
+    <div class="navbar-inner">
+        <a href="#" class="logo">IJ</a>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="#education">Education</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#publications">Publications</a></li>
+            <li><a href="#internships">Internships</a></li>
+            <li><a href="#research">Research</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#awards">Awards</a></li>
+            <li><a href="#activities">Activities</a></li>
+        </ul>
+        <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+            <span></span><span></span><span></span>
+        </button>
+    </div>
+</nav>
+
+<!-- ── Hero ────────────────────────────────────────────────── -->
+<header class="hero">
+    <div class="hero-content">
+        <div class="hero-avatar">IJ</div>
+        <h1>Isha Jain</h1>
+        <p class="tagline">AI Research &amp; Engineering &bull; IIT Delhi &bull; American Express</p>
+        <div class="hero-contact">
+            <a href="mailto:isha.infinity162@gmail.com" class="contact-pill">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+                isha.infinity162@gmail.com
+            </a>
+            <a href="tel:+917019859138" class="contact-pill">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                +91 7019859138
+            </a>
+        </div>
+    </div>
+</header>
+
+<!-- ── Main Content ────────────────────────────────────────── -->
+<main class="main-content">
+    <div class="container">
+
+        <!-- Education -->
+        <section class="section fade-up" id="education">
+            <div class="section-header">
+                <div class="section-icon blue">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c0 1.1 2.7 3 6 3s6-1.9 6-3v-5"/></svg>
+                </div>
+                <h2 class="section-title">Education</h2>
+            </div>
+            <div class="card">
+                <div class="edu-card">
+                    <div class="edu-emblem">IIT<br>D</div>
+                    <div class="edu-details">
+                        <div class="card-title">Indian Institute of Technology — Delhi</div>
+                        <div style="font-size:.92rem;color:#374151;">B.Tech in Mechanical Engineering</div>
+                        <div class="edu-meta">
+                            <span>September 2020 — August 2024</span>
+                            <span class="gpa-badge">
+                                <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                                GPA: 8.28 / 10
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Work Experience -->
+        <section class="section fade-up" id="experience">
+            <div class="section-header">
+                <div class="section-icon green">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg>
+                </div>
+                <h2 class="section-title">Work Experience</h2>
+            </div>
+            <div class="card">
+                <div class="card-header">
+                    <div>
+                        <div class="card-title">American Express, Gurugram</div>
+                        <div class="card-subtitle">Research — AI Labs &amp; Governance (Global Decision Science)</div>
+                    </div>
+                    <span class="date-badge">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                        Dec 2024 — Present
+                    </span>
+                </div>
+                <ul class="detail-list">
+                    <li><strong>LLM Fine-tuning:</strong> Developed a quantitative framework for LLM fine-tuning that predicts performance lift from data complexity heuristics and models GPU scaling and token throughput to estimate cost, combining both into an ROI-driven metric to decide when fine-tuning surpasses prompt or API-based adaptation. Submitted a patent on this research.</li>
+                    <li><strong>Prompt Engineering Framework:</strong> Collaborated on building a prompt refinement framework that transforms raw prompts into structured formats through self-critique, adversarial stress-testing, and synthetic feedback. Outperformed popular open-source techniques like DsPy, TextGrad etc. on multiple datasets.</li>
+                    <li><strong>Claim Evidence Framework:</strong> Helped build an LLM-driven system to assess the quality of Amex model documents by enhancing claim extraction, filtering relevant claims, and improving evidence retrieval and justification generation to strengthen model governance workflows.</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Publications & Patents -->
+        <section class="section fade-up" id="publications">
+            <div class="section-header">
+                <div class="section-icon purple">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+                </div>
+                <h2 class="section-title">Publications &amp; Patents</h2>
+            </div>
+            <div class="card pub-card">
+                <div class="pub-title">Hybrid variable spiking graph neural networks for energy-efficient scientific machine learning</div>
+                <div class="pub-authors">Jain, Isha; Garg, Shailesh; Chakraborty, Souvik (2025)</div>
+                <div class="pub-journal">Journal of Mechanics &amp; Physics of Solids</div>
+            </div>
+            <div class="card" style="margin-top:.75rem;">
+                <div style="display:flex;align-items:center;gap:.75rem;flex-wrap:wrap;">
+                    <span class="patent-badge">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="m2 17 10 5 10-5"/><path d="m2 12 10 5 10-5"/></svg>
+                        Patent — Accepted
+                    </span>
+                    <span style="font-size:.9rem;color:#374151;">The Prompt Engineering Framework built at Amex has been accepted as a patent and is in the process of filing.</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Internships -->
+        <section class="section fade-up" id="internships">
+            <div class="section-header">
+                <div class="section-icon teal">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+                </div>
+                <h2 class="section-title">Internships</h2>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <div>
+                        <div class="card-title">Indian Institute of Technology, Delhi</div>
+                        <div class="card-subtitle">Neural Operators and Diffusion Models</div>
+                    </div>
+                    <span class="date-badge">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                        Aug 2024 — Dec 2024
+                    </span>
+                </div>
+                <ul class="detail-list">
+                    <li>Generated point clouds for 30k ship hulls from ShipD to implement fast sampling of diffusion models using Wavelet Neural Operator</li>
+                    <li>Adapted Geo-FNO to Geo-WNO, enabling handling of irregular/unstructured meshes and improve neural operator performance</li>
+                    <li>Developed Factorized Geo-WNO, summing wavelet transforms along separate dimensions for computational efficiency</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <div>
+                        <div class="card-title">Purdue University, West Lafayette, Indiana</div>
+                        <div class="card-subtitle">Applications of Graph Neural Networks</div>
+                    </div>
+                    <span class="date-badge">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                        May 2022 — May 2023
+                    </span>
+                </div>
+                <ul class="detail-list">
+                    <li>Extracted features from a specific layer by utilising a Region Proposal Network along with Region of Interest (RoI) Pooling</li>
+                    <li>Pursued research on Relationship Proposal Networks and the underlying 3-branch RPN architecture using Faster R-CNN</li>
+                    <li>Conducted extensive research on using Graph Parsing Neural Networks to learn Human-Object Interactions on HICO dataset</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <div>
+                        <div class="card-title">Accenture Strategy &amp; Consulting, Delhi-Aerocity</div>
+                        <div class="card-subtitle">Paints Market Entry Project</div>
+                    </div>
+                    <span class="date-badge">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                        May 2023 — Jul 2023
+                    </span>
+                </div>
+                <ul class="detail-list">
+                    <li>Strategized scale-up of paints business to 175+ new districts pan India; conducted exhaustive financial analysis of competitors</li>
+                    <li>Administered tracking and development of an optimized production plan; designed tracker for lost sales basis collated orders</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Research Experience -->
+        <section class="section fade-up" id="research">
+            <div class="section-header">
+                <div class="section-icon red">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96.44 2.5 2.5 0 0 1-2.96-3.08 3 3 0 0 1-.34-5.58 2.5 2.5 0 0 1 1.32-4.24 2.5 2.5 0 0 1 1.98-3A2.5 2.5 0 0 1 9.5 2z"/><path d="M14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96.44 2.5 2.5 0 0 0 2.96-3.08 3 3 0 0 0 .34-5.58 2.5 2.5 0 0 0-1.32-4.24 2.5 2.5 0 0 0-1.98-3A2.5 2.5 0 0 0 14.5 2z"/></svg>
+                </div>
+                <h2 class="section-title">Research Experience</h2>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <div>
+                        <div class="card-title">Development of Neuroscience Inspired Graph Neural Networks</div>
+                        <div class="card-subtitle">B.Tech Project &bull; Supervisors: Prof. Souvik Chakraborty, Prof. Shaurya Shriyam</div>
+                    </div>
+                    <span class="date-badge">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                        May 2023 — May 2024
+                    </span>
+                </div>
+                <ul class="detail-list">
+                    <li>Conducted extensive literature surveys on various Spiking Neural Network models, such as Leaky Integrate and Fire model</li>
+                    <li>Generated results for three material science applications including 2D &amp; 3D datasets using SNN &amp; VSNN architectures</li>
+                    <li>Recorded results with varying positions of spiking and variable spiking neurons within the architecture (Hybrid model)</li>
+                    <li>Observed a significant energy reduction with relative errors of just about 5–6%. Similar patterns detected from contour plots</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <div>
+                        <div class="card-title">Design of Efficient Braking System: Hyperloop, IIT Delhi</div>
+                        <div class="card-subtitle">Supervisor: Prof. Jayanta Kumar Dutt</div>
+                    </div>
+                    <span class="date-badge">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                        Jun 2022 — Oct 2022
+                    </span>
+                </div>
+                <ul class="detail-list">
+                    <li>Conducted extensive research on braking technologies, developing a hybrid system that combines magnetic and friction brakes</li>
+                    <li>Devised a methodology integrating Halbach magnet arrays &amp; organic brake pads, utilizing COMSOL for comprehensive analysis</li>
+                    <li>Created a scalable design with compact electric linear actuators, allowing easy adaptation to competition specs and pod weights</li>
+                </ul>
+            </div>
+
+            <!-- Course Projects -->
+            <h3 style="font-size:1.1rem;font-weight:600;color:var(--clr-primary);margin:1.75rem 0 1rem;padding-left:.25rem;">Course Projects</h3>
+
+            <div class="card">
+                <div class="card-header">
+                    <div>
+                        <div class="card-title">Learning Graph Structures from Smooth Signals</div>
+                        <div class="card-subtitle">Graph Machine Learning &bull; Prof. Sandeep Kumar, IIT Delhi</div>
+                    </div>
+                    <span class="date-badge">Jan — Apr 2024</span>
+                </div>
+                <ul class="detail-list">
+                    <li>Implemented a paper with the goal of learning graph structure underlying a set of smooth signals by learning weights of edges</li>
+                    <li>Edge weights constructed using Gaussian kernel graph construction; optimization solved using dual-primal approach</li>
+                    <li>Validated across Digits, MNIST, and diabetes datasets, proving the success of the method</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <div>
+                        <div class="card-title">Strategic Othello Game-Playing Agent</div>
+                        <div class="card-subtitle">Data Structures and Algorithms &bull; Prof. Keerti Choudhary, IIT Delhi</div>
+                    </div>
+                    <span class="date-badge">Mar — Apr 2023</span>
+                </div>
+                <ul class="detail-list">
+                    <li>Developed an intelligent Othello agent by implementing k-step look ahead and MiniMax algorithms to select future moves</li>
+                    <li>Applied advanced algorithms for board evaluation, optimal move selection, and game simulation</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <div>
+                        <div class="card-title">Scanner App and Camera Calibration</div>
+                        <div class="card-subtitle">Computer Vision &bull; Prof. Sumantra Dutta Roy, IIT Delhi</div>
+                    </div>
+                    <span class="date-badge">Mar 2021 — Apr 2022</span>
+                </div>
+                <ul class="detail-list">
+                    <li>Developed a basic scanner program that correctly orients an image of a disoriented sheet using perspective transformation</li>
+                    <li>Calibrated a camera using 2 images by applying Direct Linear Transform and found the camera matrix</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <div>
+                        <div class="card-title">Spacetime Discretization of Swift-Hohenberg Equation</div>
+                        <div class="card-subtitle">Deep Learning &bull; Prof. Sitikantha Roy, IIT Delhi</div>
+                    </div>
+                    <span class="date-badge">Mar — May 2022</span>
+                </div>
+                <ul class="detail-list">
+                    <li>Employed Physics Informed Neural Networks (PINN) on the Swift-Hohenberg equation (PDE) with ~82% accuracy</li>
+                    <li>Implemented the Finite Difference Method to define data points at discrete time steps, validated results from both methods</li>
+                    <li>Obtained comparisons by re-training the network with multi-parameter variation — hidden layers, neurons, batch size</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Technical Skills -->
+        <section class="section fade-up" id="skills">
+            <div class="section-header">
+                <div class="section-icon amber">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+                </div>
+                <h2 class="section-title">Technical Skills</h2>
+            </div>
+            <div class="card">
+                <div class="skills-grid">
+                    <div class="skill-category">
+                        <h4>Languages &amp; Libraries</h4>
+                        <div class="skill-tags">
+                            <span class="skill-tag">Python</span>
+                            <span class="skill-tag">Java</span>
+                            <span class="skill-tag">MATLAB</span>
+                            <span class="skill-tag">C</span>
+                            <span class="skill-tag">HTML</span>
+                            <span class="skill-tag">SQL</span>
+                            <span class="skill-tag">Git</span>
+                            <span class="skill-tag">LaTeX</span>
+                            <span class="skill-tag">NumPy</span>
+                            <span class="skill-tag">Pandas</span>
+                            <span class="skill-tag">Scikit-Learn</span>
+                            <span class="skill-tag">OpenCV</span>
+                        </div>
+                    </div>
+                    <div class="skill-category">
+                        <h4>Tools &amp; Frameworks</h4>
+                        <div class="skill-tags">
+                            <span class="skill-tag framework">PyTorch</span>
+                            <span class="skill-tag framework">TensorFlow</span>
+                            <span class="skill-tag framework">Keras</span>
+                            <span class="skill-tag framework">Hugging Face</span>
+                            <span class="skill-tag framework">Django</span>
+                            <span class="skill-tag framework">MySQL</span>
+                            <span class="skill-tag framework">Colab</span>
+                            <span class="skill-tag framework">Simulink</span>
+                            <span class="skill-tag framework">FreeCAD</span>
+                            <span class="skill-tag framework">SolidWorks</span>
+                            <span class="skill-tag framework">Tinkercad</span>
+                            <span class="skill-tag framework">Jupyter</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Awards -->
+        <section class="section fade-up" id="awards">
+            <div class="section-header">
+                <div class="section-icon rose">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></svg>
+                </div>
+                <h2 class="section-title">Awards &amp; Recognition</h2>
+            </div>
+            <div class="card">
+                <div class="award-item">
+                    <div class="award-year">2025</div>
+                    <div class="award-text">Awarded <strong>Credit &amp; Fraud Risk Excellence Award</strong> at American Express for research on building the LLM Fine-tuning framework.</div>
+                </div>
+                <div class="award-item">
+                    <div class="award-year">2024</div>
+                    <div class="award-text">Awarded <strong>S.L Duggal Excellence Award</strong> on convocation for all-round excellence at IIT Delhi with a scholarship of INR 1 lakh.</div>
+                </div>
+                <div class="award-item">
+                    <div class="award-year">2022</div>
+                    <div class="award-text">Awarded <strong>Summer Undergraduate Research Award</strong> for braking system design; scholarship of INR 25k from MHRD.</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Positions of Responsibility -->
+        <section class="section fade-up" id="positions">
+            <div class="section-header">
+                <div class="section-icon slate">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                </div>
+                <h2 class="section-title">Positions of Responsibility</h2>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <div>
+                        <div class="card-title">Institute Captain, Squash (W) — BSA, IIT Delhi</div>
+                        <div class="card-subtitle">Leading the IIT Delhi team into national tournaments</div>
+                    </div>
+                    <span class="date-badge">May 2023 — May 2024</span>
+                </div>
+                <ul class="detail-list">
+                    <li>Boosted female participation in institute team by 50% YOY via regular practice, orchestrated IIT Delhi Squash Tournament '23</li>
+                    <li>Achieved 40% cost reduction through strategic fund allocation and utilization; streamlined equipment supply &amp; inventory control</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <div>
+                        <div class="card-title">Technical Engineer (Brakes &amp; LCM) — Infinity Hyperloop, IIT Delhi</div>
+                        <div class="card-subtitle">Member of founding team</div>
+                    </div>
+                    <span class="date-badge">May 2023 — May 2024</span>
+                </div>
+                <ul class="detail-list">
+                    <li>Cleared the first round of international competitions like European Hyperloop Week and Canadian Hyperloop Conference</li>
+                    <li>Led a team of 7 people as the Sponsorship Head to get onboard sponsors for Mechanical Tools and team merchandise</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Extra-curricular -->
+        <section class="section fade-up" id="activities">
+            <div class="section-header">
+                <div class="section-icon green">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5C7 4 9 7 9 7"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5C17 4 15 7 15 7"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"/><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"/></svg>
+                </div>
+                <h2 class="section-title">Extra-Curricular Activities</h2>
+            </div>
+
+            <div class="card">
+                <div class="extra-group">
+                    <div class="extra-group-title">
+                        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></svg>
+                        Sports
+                    </div>
+                    <div class="extra-group-subtitle">Won 10+ podiums in 3 sports with over 5+ Gold Medals at Institute and National Level tournaments</div>
+                    <div class="medals-grid">
+                        <div class="medal-item">
+                            <div class="medal-emoji gold">
+                                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="#92400e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></svg>
+                            </div>
+                            <span>Gold — 56th Inter IIT, Squash (W) '23</span>
+                        </div>
+                        <div class="medal-item">
+                            <div class="medal-emoji gold">
+                                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="#92400e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></svg>
+                            </div>
+                            <span>Gold — 55th Inter IIT, Squash (W) '22</span>
+                        </div>
+                        <div class="medal-item">
+                            <div class="medal-emoji bronze">
+                                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="#9a3412" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></svg>
+                            </div>
+                            <span>Bronze — Udghosh, IIT Kanpur, Squash '23</span>
+                        </div>
+                        <div class="medal-item">
+                            <div class="medal-emoji silver">
+                                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="#475569" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></svg>
+                            </div>
+                            <span>Silver — Udghosh, IIT Kanpur, Squash '22</span>
+                        </div>
+                        <div class="medal-item">
+                            <div class="medal-emoji gold">
+                                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="#92400e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></svg>
+                            </div>
+                            <span>Gold — 4x400m Relay, Athletics (W) '23</span>
+                        </div>
+                        <div class="medal-item">
+                            <div class="medal-emoji silver">
+                                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="#475569" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></svg>
+                            </div>
+                            <span>Silver — 400m Race, Athletics (W) '23</span>
+                        </div>
+                        <div class="medal-item">
+                            <div class="medal-emoji gold">
+                                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="#92400e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></svg>
+                            </div>
+                            <span>Gold — 200m Race, Athletics (W) '23</span>
+                        </div>
+                        <div class="medal-item">
+                            <div class="medal-emoji gold">
+                                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="#92400e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></svg>
+                            </div>
+                            <span>House Awards — Significant Contribution '23</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="extra-group" style="margin-top:1.5rem;padding-top:1.25rem;border-top:1px solid var(--clr-border);">
+                    <div class="extra-group-title">
+                        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
+                        Music
+                    </div>
+                    <p style="font-size:.9rem;color:#374151;">Member of the Indian Music Society, IIT Delhi (Mridang) and the instrumental team (Keyboard).</p>
+                </div>
+
+                <div class="extra-group" style="margin-top:1.25rem;padding-top:1.25rem;border-top:1px solid var(--clr-border);">
+                    <div class="extra-group-title">
+                        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
+                        National Social Service
+                    </div>
+                    <div class="extra-group-subtitle">Served as a volunteer for 2 years</div>
+                    <ul class="detail-list">
+                        <li>Visited a village and taught government school students the subjects of math and science (2019)</li>
+                        <li>Went to an old age home, served food, and spent time with senior citizens (2019)</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+    </div>
+</main>
+
+<!-- ── Footer ──────────────────────────────────────────────── -->
+<footer class="footer">
+    <p>&copy; 2025 Isha Jain &middot; Built with care</p>
+</footer>
+
+<!-- ── Scripts ─────────────────────────────────────────────── -->
+<script>
+    // Scroll-triggered fade-in
+    const observer = new IntersectionObserver(
+        (entries) => {
+            entries.forEach((e) => {
+                if (e.isIntersecting) {
+                    e.target.classList.add('visible');
+                    observer.unobserve(e.target);
+                }
+            });
+        },
+        { threshold: 0.12 }
+    );
+    document.querySelectorAll('.fade-up').forEach((el) => observer.observe(el));
+
+    // Mobile nav toggle
+    const toggle = document.getElementById('navToggle');
+    const navbar = document.getElementById('navbar');
+    toggle.addEventListener('click', () => navbar.classList.toggle('open'));
+
+    // Close mobile nav on link click
+    document.querySelectorAll('.nav-links a').forEach((a) =>
+        a.addEventListener('click', () => navbar.classList.remove('open'))
+    );
+
+    // Active nav link on scroll
+    const sections = document.querySelectorAll('.section[id]');
+    const navLinks = document.querySelectorAll('.nav-links a');
+    window.addEventListener('scroll', () => {
+        let current = '';
+        sections.forEach((s) => {
+            if (window.scrollY >= s.offsetTop - 120) current = s.id;
+        });
+        navLinks.forEach((a) => {
+            a.classList.toggle('active', a.getAttribute('href') === '#' + current);
+        });
+    });
+</script>
+
+</body>
+</html>
